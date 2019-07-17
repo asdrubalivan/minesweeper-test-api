@@ -1,0 +1,25 @@
+{
+  "name": "minesweeper-test-api",
+  "version": "1.0.0",
+  "description": "A minesweeper api",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asdrubalivan/minesweeper-test-api.git"
+  },
+  "keywords": [
+    "minesweeper"
+  ],
+  "author": "Asdrubal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asdrubalivan/minesweeper-test-api/issues"
+  },
+  "homepage": "https://github.com/asdrubalivan/minesweeper-test-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
