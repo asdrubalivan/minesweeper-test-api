@@ -4,6 +4,7 @@
   "description": "A minesweeper api",
   "main": "src/index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/asdrubalivan/minesweeper-test-api#readme",
   "dependencies": {
+    "debug": "^4.1.1",
     "express": "^4.17.1"
   }
 }
