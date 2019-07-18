@@ -1,9 +1,9 @@
-const { generateBoard } = require("../services/minesweeper");
+const { createBoard: createBoardService } = require("../services/minesweeper");
 const { processBoard } = require("../utils");
 
 const createBoard = async (req, res) => {
-  const board = await generateBoard();
-  const processedBoard = processBoard();
+  const board = await createBoardService();
+  const processedBoard = processBoard(board);
   return res.json(processedBoard);
 };
 
