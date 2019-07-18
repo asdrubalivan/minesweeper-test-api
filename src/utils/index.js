@@ -58,9 +58,36 @@ const countMines = (board, i, j) => {
   return total;
 };
 
+const getCellScreenValue = (board, i, j) => {
+  const cell = board[i][j];
+  if (cell.isRevealed) {
+    if (cell.isMine) {
+      return "*";
+    } else {
+      const count = countMines(board, i, j);
+      return String(count);
+    }
+  } else {
+    return cell.hasFlag ? "?" : ".";
+  }
+};
+
+const processBoard = board => {
+  const retVal = [];
+  for (let i = 0; i < ROWS; i++) {
+    const row = [];
+    for (let j = 0; j < COLS; j++) {
+      retVal.push(getCellScreenValue(board, i, j));
+    }
+    retVal.push(row);
+  }
+  return retVal;
+};
+
 module.exports = {
   generateRandomBoard,
   countMines,
+  processBoard,
   COLS,
   ROWS,
   MINES
