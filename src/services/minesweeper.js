@@ -9,7 +9,7 @@ const createBoard = () => {
     finished: null,
     board
   };
-  return db("games").insert(data);
+  return db("games").insert(data, Object.keys(data));
 };
 
 module.exports = {
