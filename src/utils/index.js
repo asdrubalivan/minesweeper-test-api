@@ -39,5 +39,8 @@ const generateRandomBoard = () => {
 };
 
 module.exports = {
-  generateRandomBoard
+  generateRandomBoard,
+  COLS,
+  ROWS,
+  MINES
 };
