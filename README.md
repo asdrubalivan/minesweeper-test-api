@@ -80,11 +80,37 @@ In case of game not being found
 }
 ```
 
+### POST /minesweeper/
+
+Creates a new minesweeper game. It returns a response like the following where the id is the new id of the game
+
+```json
+{
+  "status": 200,
+  "error": false,
+  "data": {
+    "id": 2,
+    "board": [
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."],
+      [".", ".", ".", ".", "."]
+    ],
+    "isOver": false,
+    "started": "2019-07-18T00:07:00.728Z",
+    "finished": null
+  }
+}
+```
+
 ### POST /minesweeper/{id}/reveal/{i}/{j}
 
 Reveals a new cell in the board
 
-* id: game if
+Query params:
+
+* id: game id
 * i: x coordinate in the board
 * j: y coordinate in the board
 
