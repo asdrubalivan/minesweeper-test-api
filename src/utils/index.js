@@ -20,7 +20,7 @@ const generateOptions = () => {
   return positions;
 };
 
-const generateBoard = () => {
+const generateRandomBoard = () => {
   const minePositions = generateOptions();
   const finalBoard = [];
   for (let i = 0; i < ROWS; i++) {
@@ -39,5 +39,5 @@ const generateBoard = () => {
 };
 
 module.exports = {
-  generateBoard
+  generateRandomBoard
 };
