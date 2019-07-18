@@ -1,7 +1,7 @@
 const db = require("../db");
 const { generateRandomBoard } = require("../utils");
 
-const generateBoard = () => {
+const createBoard = () => {
   const board = generateRandomBoard();
   const data = {
     isOver: false,
@@ -13,5 +13,5 @@ const generateBoard = () => {
 };
 
 module.exports = {
-  generateBoard
+  createBoard
 };
