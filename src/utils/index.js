@@ -47,8 +47,8 @@ const countMines = (board, i, j) => {
     for (let offsetY = -1; offsetY <= 1; offsetY++) {
       const iPrime = i + offsetX;
       const jPrime = j + offsetY;
-      if (iPrime > -1 && iPrime < COLS && jPrime > -1 && jPrime < ROWS) {
-        const neighbor = board[i][j];
+      if (iPrime > -1 && iPrime < ROWS && jPrime > -1 && jPrime < COLS) {
+        const neighbor = board[iPrime][jPrime];
         if (neighbor.isMine) {
           total++;
         }
@@ -77,7 +77,7 @@ const processBoard = board => {
   for (let i = 0; i < ROWS; i++) {
     const row = [];
     for (let j = 0; j < COLS; j++) {
-      retVal.push(getCellScreenValue(board, i, j));
+      row.push(getCellScreenValue(board, i, j));
     }
     retVal.push(row);
   }
