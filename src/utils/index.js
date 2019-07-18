@@ -38,8 +38,29 @@ const generateRandomBoard = () => {
   return finalBoard;
 };
 
+const countMines = (board, i, j) => {
+  if (i >= ROWS || j >= COLS) {
+    throw new Error("Count error");
+  }
+  let total = 0;
+  for (let offsetX = -1; offsetX <= 1; offsetX++) {
+    for (let offsetY = -1; offsetY <= 1; offsetY++) {
+      const iPrime = i + offsetX;
+      const jPrime = j + offsetY;
+      if (iPrime > -1 && iPrime < COLS && jPrime > -1 && jPrime < ROWS) {
+        const neighbor = board[i][j];
+        if (neighbor.isMine) {
+          total++;
+        }
+      }
+    }
+  }
+  return total;
+};
+
 module.exports = {
   generateRandomBoard,
+  countMines,
   COLS,
   ROWS,
   MINES
