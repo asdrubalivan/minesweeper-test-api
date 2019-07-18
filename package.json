@@ -22,7 +22,9 @@
   "homepage": "https://github.com/asdrubalivan/minesweeper-test-api#readme",
   "dependencies": {
     "debug": "^4.1.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.19.0",
+    "pg": "^7.11.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
