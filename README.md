@@ -40,7 +40,11 @@ In case of success:
 * error: Whether or not there's an error
 * data: Game data
 * data.id: Game id
-* data.board: Current board status
+* data.board: Current board status in which:
+1. "."  means that a cell has not been revelead
+1. A number  means that a cell has been revealed and it contains the number of surrounding mines 
+1. "*"  means that a cell is a mine
+1. "?"  means that a cell has a flag on it
 * data.isOver: Whether the game is over or not
 * data.started: When was the game started
 * data.finished: When was the game finished (null if it's not finished yet)
@@ -52,11 +56,11 @@ In case of success:
   "data" : {
     "id": 1,
     "board": [
-      [".", ".", ".", ".", "x"],
-      [".", ".", ".", ".", "x"],
-      [".", ".", ".", ".", "x"],
-      [".", ".", ".", ".", "x"],
-      [".", ".", ".", ".", "x"]
+      [".", ".", ".", ".", "1"],
+      [".", ".", ".", ".", "0"],
+      [".", ".", ".", ".", "0"],
+      [".", ".", ".", ".", "1"],
+      [".", ".", ".", ".", "0"]
     ],
     "isOver": false,
     "started": "2019-07-18T00:07:00.728Z",
@@ -92,11 +96,11 @@ Reveals a new cell in the board
   "data" : {
     "id": 1,
     "board": [
-      [".", ".", ".", ".", "x"],
-      [".", ".", ".", ".", "x"],
-      [".", ".", ".", ".", "x"],
-      [".", ".", ".", ".", "x"],
-      [".", ".", ".", ".", "x"]
+      [".", ".", ".", ".", "1"],
+      [".", ".", ".", ".", "0"],
+      [".", ".", ".", ".", "0"],
+      [".", ".", ".", ".", "0"],
+      [".", ".", ".", ".", "1"]
     ],
     "isOver": false,
     "started": "2019-07-18T00:07:00.728Z",
