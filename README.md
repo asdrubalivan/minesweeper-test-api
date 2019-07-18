@@ -17,10 +17,12 @@ We are going to use the following "Games** table in a postgresql database to sto
 ]
 ```
 
-In the aforementioned array the i, j index of each element corresponds to the i, j index of each column within the game board
+In the aforementioned array the i, j index of each element corresponds to a i, j cell within the game board
 
 Where:
-  * 
+  * isMine indicates whether a cell is a mine or not
+  * isRevealed indicates whether a cell has been revealed or not
+  * hasFlag if the cell has been flagged
 
 ## Endpoints
 
@@ -97,7 +99,8 @@ Reveals a new cell in the board
       [".", ".", ".", ".", "x"]
     ],
     "isOver": false,
-    "started": "2019-07-18T00:07:00.728Z"
+    "started": "2019-07-18T00:07:00.728Z",
+    "finished": null
   }
 }
 ```
