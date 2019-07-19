@@ -8,6 +8,25 @@ const {
   processBoard
 } = require("../utils");
 
+const getBoardData = id => {
+  return db
+    .select("*")
+    .from("games")
+    .where("id", id)
+    .limit(1);
+};
+
+const getProcessedBoard = async id => {
+  const data = await getBoardData(id);
+  if (!data.length) {
+    return null;
+  }
+  return {
+    ...data[0],
+    board: processBoard(data[0].board)
+  };
+};
+
 const createBoard = async () => {
   const board = generateRandomBoard();
   const data = {
@@ -27,11 +46,7 @@ const revealFromBoard = async (id, i, j) => {
   if (i < 0 || i >= COLS || j < 0 || j >= ROWS) {
     throw new Error("Wrong coordinates");
   }
-  const gameData = await db
-    .select("*")
-    .from("games")
-    .where("id", id)
-    .limit(1);
+  const gameData = await getBoardData(id);
   if (!gameData.length) {
     throw new Error("Not found");
   }
@@ -54,5 +69,6 @@ const revealFromBoard = async (id, i, j) => {
 
 module.exports = {
   createBoard,
-  revealFromBoard
+  revealFromBoard,
+  getProcessedBoard
 };

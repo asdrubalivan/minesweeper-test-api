@@ -1,8 +1,26 @@
 const {
   createBoard: createBoardService,
-  revealFromBoard
+  revealFromBoard,
+  getProcessedBoard
 } = require("../services/minesweeper");
 const { processBoard } = require("../utils");
+
+const getBoard = async (req, res) => {
+  const id = Number(req.params.id) || 0;
+  const boardData = await getProcessedBoard(id);
+  if (boardData === null) {
+    return res.status(404).json({
+      status: 404,
+      error: true,
+      message: "Not found"
+    });
+  }
+  return res.status(200).json({
+    status: 200,
+    error: false,
+    data: boardData
+  });
+};
 
 const createBoard = async (req, res) => {
   const data = await createBoardService();
@@ -32,7 +50,6 @@ const revealCell = async (req, res) => {
       message: err.message
     });
   }
-    console.log(data.board.map(d => d.join(' ')));
   return res.status(200).json({
     status: 200,
     error: false,
@@ -42,5 +59,6 @@ const revealCell = async (req, res) => {
 
 module.exports = {
   createBoard,
-  revealCell
+  revealCell,
+  getBoard
 };

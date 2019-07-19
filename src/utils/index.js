@@ -148,4 +148,4 @@ module.exports = {
   COLS,
   ROWS,
   MINES
-};
+}
