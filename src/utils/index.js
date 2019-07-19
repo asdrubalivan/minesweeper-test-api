@@ -84,10 +84,67 @@ const processBoard = board => {
   return retVal;
 };
 
+/**
+ * Reveal function. Returns true if cell is in mine, false otherwise
+ */
+const reveal = (board, i, j) => {
+  const cell = board[i][j];
+  cell.isRevealed = true;
+  if (cell.isMine) {
+    return true;
+  }
+  if (countMines(board, i, j) === 0) {
+    fillTiles(board, i, j);
+  }
+  return false;
+};
+
+const revealAllTiles = board => {
+  for (let i = 0; i < ROWS; i++) {
+    for (let j = 0; j < COLS; j++) {
+      reveal(board, i, j);
+    }
+  }
+};
+
+const fillTiles = (board, i, j) => {
+  for (let offsetX = -1; offsetX <= 1; offsetX++) {
+    for (let offsetY = -1; offsetY <= 1; offsetY++) {
+      const iPrime = i + offsetX;
+      const jPrime = j + offsetY;
+      if (iPrime > -1 && iPrime < COLS && jPrime > -1 && jPrime < ROWS) {
+        const neighbor = board[iPrime][jPrime];
+        if (!neighbor.isMine && !neighbor.isRevealed) {
+          reveal(board, iPrime, jPrime);
+        }
+      }
+    }
+  }
+};
+
+const isOver = board => {
+  let total = 0;
+  for (let i = 0; i < ROWS; i++) {
+    for (let j = 0; j < COLS; j++) {
+      const cell = board[i][j];
+      if (cell.isRevealed) {
+        total++;
+        if (cell.isMine) {
+          return true;
+        }
+      }
+    }
+  }
+  return total + MINES === ROWS * COLS;
+};
+
 module.exports = {
   generateRandomBoard,
   countMines,
   processBoard,
+  reveal,
+  revealAllTiles,
+  isOver,
   COLS,
   ROWS,
   MINES
